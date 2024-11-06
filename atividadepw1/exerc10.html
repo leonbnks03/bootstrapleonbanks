@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Função Exponencial</title>
+</head>
+<body>
+    <h1>Cálculo da Função Exponencial</h1>
+    <label for="x">Informe o valor de x:</label>
+    <input type="number" id="x"><br>
+    <button onclick="calculateExponential()">Calcular e Mostrar Resultados</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateExponential() {
+            const x = parseFloat(document.getElementById('x').value);
+            const results = [];
+            for (let i = 1; i <= 5; i++) {
+                results.push(`e^${x * i} = ${Math.exp(x * i).toFixed(2)}`);
+            }
+            document.getElementById('result').innerHTML = results.join('<br>');
+        }
+    </script>
+</body>
+</html>

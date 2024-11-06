@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Força Resultante</title>
+</head>
+<body>
+    <h1>Cálculo da Força Resultante</h1>
+    <h2>1. Situação 1</h2>
+    <label for="mass">Massa do objeto (kg):</label>
+    <input type="number" id="mass"><br>
+    <label for="acceleration1">Aceleração 1 (m/s²):</label>
+    <input type="number" id="acceleration1"><br>
+    <label for="acceleration2">Aceleração 2 (m/s²):</label>
+    <input type="number" id="acceleration2"><br>
+    <button onclick="calculateResultantForce()">Calcular Força Resultante</button>
+    <p id="resultant"></p>
+
+    <h2>2. Situação 2</h2>
+    <label for="mass1">Massa do objeto 1 (kg):</label>
+    <input type="number" id="mass1"><br>
+    <label for="mass2">Massa do objeto 2 (kg):</label>
+    <input type="number" id="mass2"><br>
+    <label for="acceleration1_2">Aceleração do objeto 1 (m/s²):</label>
+    <input type="number" id="acceleration1_2"><br>
+    <label for="acceleration2_2">Aceleração do objeto 2 (m/s²):</label>
+    <input type="number" id="acceleration2_2"><br>
+    <button onclick="calculateActionReaction()">Calcular Forças de Ação e Reação</button>
+    <p id="actionReaction"></p>
+
+    <script>
+        function calculateResultantForce() {
+            const mass = parseFloat(document.getElementById('mass').value);
+            const a1 = parseFloat(document.getElementById('acceleration1').value);
+            const a2 = parseFloat(document.getElementById('acceleration2').value);
+            const resultant = mass * (a1 - a2);
+            document.getElementById('resultant').innerText = `Força Resultante: ${resultant.toFixed(2)} N`;
+        }
+
+        function calculateActionReaction() {
+            const mass1 = parseFloat(document.getElementById('mass1').value);
+            const mass2 = parseFloat(document.getElementById('mass2').value);
+            const a1 = parseFloat(document.getElementById('acceleration1_2').value);
+            const a2 = parseFloat(document.getElementById('acceleration2_2').value);
+            const force1 = mass1 * a1;
+            const force2 = mass2 * a2;
+            const reactionForce = force1; // Terceira Lei de Newton
+
+            document.getElementById('actionReaction').innerText = `
+                Força do objeto 1: ${force1.toFixed(2)} N <br>
+                Força do objeto 2: ${force2.toFixed(2)} N <br>
+                Força de Ação/Reação: ${reactionForce.toFixed(2)} N
+            `;
+        }
+    </script>
+</body>
+</html>

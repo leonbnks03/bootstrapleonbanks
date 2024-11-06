@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proporções em Ligações Químicas</title>
+</head>
+<body>
+    <h1>Cálculo de Proporções em Ligações Químicas</h1>
+    
+    <h2>1. Ligações Iônicas</h2>
+    <label for="metalElectrons">Elétrons que o metal precisa perder:</label>
+    <input type="number" id="metalElectrons"><br>
+    <label for="ametalElectrons">Elétrons que o ametal precisa ganhar:</label>
+    <input type="number" id="ametalElectrons"><br>
+    <button onclick="calculateIonic()">Calcular Fórmula Iônica</button>
+    <p id="ionicResult"></p>
+
+    <h2>2. Ligações Covalentes</h2>
+    <label for="atom1Bonds">Ligações que o átomo 1 pode formar:</label>
+    <input type="number" id="atom1Bonds"><br>
+    <label for="atom2Bonds">Ligações que o átomo 2 pode formar:</label>
+    <input type="number" id="atom2Bonds"><br>
+    <button onclick="calculateCovalent()">Calcular Fórmula Molecular</button>
+    <p id="covalentResult"></p>
+
+    <script>
+        function calculateIonic() {
+            const metalElectrons = parseInt(document.getElementById('metalElectrons').value);
+            const ametalElectrons = parseInt(document.getElementById('ametalElectrons').value);
+            
+            const ratio = Math.abs(metalElectrons) / Math.abs(ametalElectrons);
+            document.getElementById('ionicResult').innerText = `Fórmula iônica: Metal²Ametal (Razão: ${ratio}:1)`;
+        }
+
+        function calculateCovalent() {
+            const atom1Bonds = parseInt(document.getElementById('atom1Bonds').value);
+            const atom2Bonds = parseInt(document.getElementById('atom2Bonds').value);
+            
+            const totalBonds = Math.min(atom1Bonds, atom2Bonds);
+            const resultText = `Fórmula molecular: ${'H'.repeat(totalBonds)}O (1 átomo de O para ${totalBonds} de H)`;
+            document.getElementById('covalentResult').innerText = resultText;
+        }
+    </script>
+</body>
+</html>

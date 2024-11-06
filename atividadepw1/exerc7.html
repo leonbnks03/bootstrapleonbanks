@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predominância de Metal ou Ametal</title>
+</head>
+<body>
+    <h1>Determinação da Predominância em uma Liga</h1>
+    <label for="metal">Percentual de metal (%):</label>
+    <input type="number" id="metal" placeholder="Ex: 60"><br>
+    <label for="ametal">Percentual de ametal (%):</label>
+    <input type="number" id="ametal" placeholder="Ex: 40"><br>
+    <button onclick="checkPredominance()">Verificar Predominância</button>
+    <p id="result"></p>
+
+    <script>
+        function checkPredominance() {
+            const metal = parseFloat(document.getElementById('metal').value);
+            const ametal = parseFloat(document.getElementById('ametal').value);
+            const total = metal + ametal;
+
+            if (total !== 100) {
+                document.getElementById('result').innerText = 'A soma das porcentagens deve ser igual a 100%.';
+                return;
+            }
+
+            if (metal > ametal) {
+                document.getElementById('result').innerText = 'A liga é predominantemente metálica.';
+            } else {
+                document.getElementById('result').innerText = 'A liga é predominantemente ametálica.';
+            }
+        }
+    </script>
+</body>
+</html>

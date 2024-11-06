@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composição de Metal e Ametal</title>
+</head>
+<body>
+    <h1>Composição de Metal e Ametal</h1>
+    <label for="metalPercentage">Percentual de metal (%):</label>
+    <input type="number" id="metalPercentage" placeholder="Ex: 60"><br>
+    <label for="ametalPercentage">Percentual de ametal (%):</label>
+    <input type="number" id="ametalPercentage" placeholder="Ex: 40"><br>
+    <button onclick="checkComposition()">Verificar Composição</button>
+    <p id="result"></p>
+
+    <script>
+        function checkComposition() {
+            const metal = parseFloat(document.getElementById('metalPercentage').value);
+            const ametal = parseFloat(document.getElementById('ametalPercentage').value);
+            const total = metal + ametal;
+
+            if (total !== 100) {
+                document.getElementById('result').innerText = 'A soma das porcentagens deve ser igual a 100%.';
+                return;
+            }
+
+            if (metal > 50) {
+                document.getElementById('result').innerText = 'A liga é predominantemente metálica.';
+            } else {
+                document.getElementById('result').innerText = 'A liga é predominantemente ametálica.';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+Vamos criar uma página para cada um dos 11 exercícios solicitados, utilizando Bootstrap e CSS Grid para estilização e layout. Vou fornecer o código HTML e JavaScript para cada exercício, e você poderá ajustar conforme necessário.
+
+1°) Soma, Média e Contagem de Números
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Soma, Média e Contagem</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Soma, Média e Contagem de Números</h1>
+        <div class="form-group">
+            <label for="numbers">Digite N números inteiros (separados por vírgula):</label>
+            <input type="text" class="form-control" id="numbers" placeholder="Ex: 1, 2, 3">
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Calcular</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            const input = document.getElementById('numbers').value;
+            const numbers = input.split(',').map(Number);
+            const sum = numbers.reduce((a, b) => a + b, 0);
+            const average = sum / numbers.length || 0;
+            const evenCount = numbers.filter(n => n % 2 === 0).length;
+            const oddCount = numbers.length - evenCount;
+
+            document.getElementById('result').innerHTML = `
+                Soma: ${sum} <br>
+                Média: ${average.toFixed(2)} <br>
+                Números pares: ${evenCount} <br>
+                Números ímpares: ${oddCount}
+            `;
+        }
+    </script>
+</body>
+</html>
+2°) Conversão de Temperatura
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Conversão de Temperatura</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversão de Temperatura</h1>
+        <div class="form-group">
+            <label for="temp">Digite a temperatura:</label>
+            <input type="number" class="form-control" id="temp">
+        </div>
+        <div class="form-group">
+            <label for="unit">Escolha a unidade:</label>
+            <select class="form-control" id="unit">
+                <option value="C">Celsius para Fahrenheit</option>
+                <option value="F">Fahrenheit para Celsius</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" onclick="convert()">Converter</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function convert() {
+            const temp = parseFloat(document.getElementById('temp').value);
+            const unit = document.getElementById('unit').value;
+            let result;
+
+            if (unit === 'C') {
+                result = (temp * 1.8) + 32;
+                document.getElementById('result').innerText = `${temp}°C = ${result.toFixed(2)}°F`;
+            } else {
+                result = (temp - 32) / 1.8;
+                document.getElementById('result').innerText = `${temp}°F = ${result.toFixed(2)}°C`;
+            }
+        }
+    </script>
+</body>
+</html>
+3°) Análise de um Vetor de Números
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Análise de Números</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de Números</h1>
+        <div class="form-group">
+            <label for="vector">Digite 10 números inteiros (separados por vírgula):</label>
+            <input type="text" class="form-control" id="vector" placeholder="Ex: 1, 2, 3, ...">
+        </div>
+        <button class="btn btn-primary" onclick="analyze()">Analisar</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function analyze() {
+            const input = document.getElementById('vector').value;
+            const numbers = input.split(',').map(Number);
+            const average = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+            const greaterThanAverage = numbers.filter(n => n > average);
+            const negativeCount = numbers.filter(n => n < 0).length;
+
+            document.getElementById('result').innerHTML = `
+                Números maiores que a média (${average.toFixed(2)}): ${greaterThanAverage.join(', ')} <br>
+                Números menores que zero: ${negativeCount}
+            `;
+        }
+    </script>
+</body>
+</html>
+4°) Cálculo de Gasto de Combustível
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Gasto de Combustível</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gasto de Combustível</h1>
+        <div class="form-group">
+            <label for="km">Quilometragem percorrida (km):</label>
+            <input type="number" class="form-control" id="km">
+        </div>
+        <div class="form-group">
+            <label for="fuelPrice">Preço do combustível (R$):</label>
+            <input type="number" class="form-control" id="fuelPrice">
+        </div>
+        <button class="btn btn-primary" onclick="calculateFuel()">Calcular</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function calculateFuel() {
+            const km = parseFloat(document.getElementById('km').value);
+            const fuelPrice = parseFloat(document.getElementById('fuelPrice').value);
+            const consumption = km / 8; // 8 km/litro
+            const totalCost = consumption * fuelPrice;
+
+            document.getElementById('result').innerText = `Custo total: R$ ${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
+5°) Cálculo de Custo para Assentar Piso
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Custo para Assentar Piso</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Custo para Assentar Piso</h1>
+        <div class="form-group">
+            <label for="length">Comprimento do cômodo (m):</label>
+            <input type="number" class="form-control" id="length">
+        </div>
+        <div class="form-group">
+            <label for="width">Largura do cômodo (m):</label>
+            <input type="number" class="form-control" id="width">
+        </div>
+        <button class="btn btn-primary" onclick="calculateCost()">Calcular</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function calculateCost() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const area = length * width;
+            const cost = area * 36; // 36,00 por m²
+
+            document.getElementById('result').innerText = `Custo total: R$ ${cost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
+6°) Cálculo da Força Resultante
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Força Resultante</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Força Resultante</h1>
+        <h2>1. Força Resultante</h2>
+        <div class="form-group">
+            <label for="mass">Massa do objeto (kg):</label>
+            <input type="number" class="form-control" id="mass">
+        </div>
+        <div class="form-group">
+            <label for="a1">Aceleração 1 (m/s²):</label>
+            <input type="number" class="form-control" id="a1">
+        </div>
+        <div class="form-group">
+            <label for="a2">Aceleração 2 (m/s²):</label>
+            <input type="number" class="form-control" id="a2">
+        </div>
+        <button class="btn btn-primary" onclick="calculateResultant()">Calcular Força Resultante</button>
+        <p id="resultantResult" class="result"></p>
+
+        <h2>2. Força de Ação e Reação</h2>
+        <div class="form-group">
+            <label for="mass1">Massa do objeto 1 (kg):</label>
+            <input type="number" class="form-control" id="mass1">
+        </div>
+        <div class="form-group">
+            <label for="mass2">Massa do objeto 2 (kg):</label>
+            <input type="number" class="form-control" id="mass2">
+        </div>
+        <div class="form-group">
+            <label for="a1Reaction">Aceleração do objeto 1 (m/s²):</label>
+            <input type="number" class="form-control" id="a1Reaction">
+        </div>
+        <div class="form-group">
+            <label for="a2Reaction">Aceleração do objeto 2 (m/s²):</label>
+            <input type="number" class="form-control" id="a2Reaction">
+        </div>
+        <button class="btn btn-primary" onclick="calculateActionReaction()">Calcular Ação e Reação</button>
+        <p id="reactionResult" class="result"></p>
+    </div>
+
+    <script>
+        function calculateResultant() {
+            const mass = parseFloat(document.getElementById('mass').value);
+            const a1 = parseFloat(document.getElementById('a1').value);
+            const a2 = parseFloat(document.getElementById('a2').value);
+            const resultant = mass * (a1 - a2);
+
+            document.getElementById('resultantResult').innerText = `Força Resultante: ${resultant.toFixed(2)} N`;
+        }
+
+        function calculateActionReaction() {
+            const mass1 = parseFloat(document.getElementById('mass1').value);
+            const mass2 = parseFloat(document.getElementById('mass2').value);
+            const a1 = parseFloat(document.getElementById('a1Reaction').value);
+            const a2 = parseFloat(document.getElementById('a2Reaction').value);
+
+            const force1 = mass1 * a1;
+            const force2 = mass2 * a2;
+
+            document.getElementById('reactionResult').innerText = `
+                Força de Ação: ${force1.toFixed(2)} N <br>
+                Força de Reação: ${force2.toFixed(2)} N
+            `;
+        }
+    </script>
+</body>
+</html>
+7°) Predominância de Metal ou Ametal
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Predominância de Metal ou Ametal</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predominância de Metal ou Ametal</h1>
+        <div class="form-group">
+            <label for="metal">Percentual de metal (%):</label>
+            <input type="number" class="form-control" id="metal" placeholder="Ex: 60">
+        </div>
+        <div class="form-group">
+            <label for="ametal">Percentual de ametal (%):</label>
+            <input type="number" class="form-control" id="ametal" placeholder="Ex: 40">
+        </div>
+        <button class="btn btn-primary" onclick="checkPredominance()">Verificar Predominância</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function checkPredominance() {
+            const metal = parseFloat(document.getElementById('metal').value);
+            const ametal = parseFloat(document.getElementById('ametal').value);
+            const total = metal + ametal;
+
+            if (total !== 100) {
+                document.getElementById('result').innerText = 'A soma das porcentagens deve ser igual a 100%.';
+                return;
+            }
+
+            document.getElementById('result').innerText = (metal > ametal) ? 
+                'A liga é predominantemente metálica.' : 
+                'A liga é predominantemente ametálica.';
+        }
+    </script>
+</body>
+</html>
+8°) Cálculo de Proporções em Ligações Químicas
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Proporções em Ligações Químicas</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cálculo de Proporções em Ligações Químicas</h1>
+        
+        <h2>1. Ligações Iônicas</h2>
+        <div class="form-group">
+            <label for="metalElectrons">Elétrons que o metal precisa perder:</label>
+            <input type="number" class="form-control" id="metalElectrons">
+        </div>
+        <div class="form-group">
+            <label for="ametalElectrons">Elétrons que o ametal precisa ganhar:</label>
+            <input type="number" class="form-control" id="ametalElectrons">
+        </div>
+        <button class="btn btn-primary" onclick="calculateIonic()">Calcular Fórmula Iônica</button>
+        <p id="ionicResult" class="result"></p>
+
+        <h2>2. Ligações Covalentes</h2>
+        <div class="form-group">
+            <label for="atom1Bonds">Ligações que o átomo 1 pode formar:</label>
+            <input type="number" class="form-control" id="atom1Bonds">
+        </div>
+        <div class="form-group">
+            <label for="atom2Bonds">Ligações que o átomo 2 pode formar:</label>
+            <input type="number" class="form-control" id="atom2Bonds">
+        </div>
+        <button class="btn btn-primary" onclick="calculateCovalent()">Calcular Fórmula Molecular</button>
+        <p id="covalentResult" class="result"></p>
+    </div>
+
+    <script>
+        function calculateIonic() {
+            const metalElectrons = parseInt(document.getElementById('metalElectrons').value);
+            const ametalElectrons = parseInt(document.getElementById('ametalElectrons').value);
+            const ratio = Math.abs(metalElectrons) / Math.abs(ametalElectrons);
+            document.getElementById('ionicResult').innerText = `Fórmula iônica: M:A (${ratio}:1)`;
+        }
+
+        function calculateCovalent() {
+            const atom1Bonds = parseInt(document.getElementById('atom1Bonds').value);
+            const atom2Bonds = parseInt(document.getElementById('atom2Bonds').value);
+            const hAtoms = Math.min(atom1Bonds, atom2Bonds);
+            document.getElementById('covalentResult').innerText = `Fórmula molecular: H${hAtoms}`;
+        }
+    </script>
+</body>
+</html>
+9°) Recebendo N Valores
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Valores Inseridos</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Valores Inseridos</h1>
+        <div class="form-group">
+            <label for="values">Digite N valores (separados por vírgula):</label>
+            <input type="text" class="form-control" id="values" placeholder="Ex: 1, 2, 3">
+        </div>
+        <button class="btn btn-primary" onclick="analyzeValues()">Analisar</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function analyzeValues() {
+            const input = document.getElementById('values').value;
+            const values = input.split(',').map(Number);
+            const max = Math.max(...values);
+            const min = Math.min(...values);
+
+            document.getElementById('result').innerHTML = `
+                Valores inseridos: ${values.join(', ')} <br>
+                Maior valor: ${max} <br>
+                Menor valor: ${min}
+            `;
+        }
+    </script>
+</body>
+</html>
+10°) Função Exponencial
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Função Exponencial</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Função Exponencial</h1>
+        <div class="form-group">
+            <label for="xValue">Digite o valor de x:</label>
+            <input type="number" class="form-control" id="xValue">
+        </div>
+        <button class="btn btn-primary" onclick="calculateExponential()">Calcular e</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function calculateExponential() {
+            const x = parseFloat(document.getElementById('xValue').value);
+            const result = Math.exp(x); // e^x
+
+            document.getElementById('result').innerText = `f(${x}) = e^${x} = ${result.toFixed(4)}`;
+        }
+    </script>
+</body>
+</html>
+11°) Composição de Metal e Ametal
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Composição de Metal e Ametal</title>
+    <style>
+        .container { margin-top: 50px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Composição de Metal e Ametal</h1>
+        <div class="form-group">
+            <label for="metalPercentage">Percentual de metal (%):</label>
+            <input type="number" class="form-control" id="metalPercentage">
+        </div>
+        <div class="form-group">
+            <label for="ametalPercentage">Percentual de ametal (%):</label>
+            <input type="number" class="form-control" id="ametalPercentage">
+        </div>
+        <button class="btn btn-primary" onclick="checkComposition()">Verificar Composição</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        function checkComposition() {
+            const metal = parseFloat(document.getElementById('metalPercentage').value);
+            const ametal = parseFloat(document.getElementById('ametalPercentage').value);
+            const total = metal + ametal;
+
+            if (total !== 100) {
+                document.getElementById('result').innerText = 'A soma das porcentagens deve ser igual a 100%.';
+                return;
+            }
+
+            document.getElementById('result').innerText = (metal > ametal) ? 
+                'A liga é predominantemente metálica.' : 
+                'A liga é predominantemente ametálica.';
+        }
+    </script>
+</body>
+</html>

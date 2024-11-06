@@ -1,0 +1,28 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    background-color: #ffffff;
+  }
+  .row {
+    margin-top: 30px;
+  }
+  
+  .col-md-4 {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  

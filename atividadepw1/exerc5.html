@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custo de Piso</title>
+</head>
+<body>
+    <h1>Cálculo de Custo para Assentar Piso</h1>
+    <label for="length">Comprimento (m):</label>
+    <input type="number" id="length"><br>
+    <label for="width">Largura (m):</label>
+    <input type="number" id="width"><br>
+    <button onclick="calculateFloorCost()">Calcular Custo</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateFloorCost() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const pricePerM2 = 36.00;
+
+            const area = length * width;
+            const totalCost = area * pricePerM2;
+
+            document.getElementById('result').innerText = `Custo total para assentar piso: R$ ${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

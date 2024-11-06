@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receber N Valores</title>
+</head>
+<body>
+    <h1>Valores do Usuário</h1>
+    <label for="values">Digite os valores (separados por vírgula):</label>
+    <input type="text" id="values" placeholder="Ex: 1, 2, 3"><br>
+    <button onclick="showValues()">Mostrar Valores</button>
+    <button onclick="findMax()">Mostrar Maior Valor</button>
+    <button onclick="findMin()">Mostrar Menor Valor</button>
+    <p id="result"></p>
+
+    <script>
+        function showValues() {
+            const input = document.getElementById('values').value;
+            document.getElementById('result').innerText = `Valores: ${input}`;
+        }
+
+        function findMax() {
+            const values = document.getElementById('values').value.split(',').map(Number);
+            const max = Math.max(...values);
+            document.getElementById('result').innerText = `Maior Valor: ${max}`;
+        }
+
+        function findMin() {
+            const values = document.getElementById('values').value.split(',').map(Number);
+            const min = Math.min(...values);
+            document.getElementById('result').innerText = `Menor Valor: ${min}`;
+        }
+    </script>
+</body>
+</html>

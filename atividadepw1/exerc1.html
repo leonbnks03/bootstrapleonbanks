@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de Números Inteiros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Leitor de Números Inteiros</h1>
+    <label for="numbers">Informe os números inteiros (separados por vírgula):</label><br>
+    <input type="text" id="numbers" placeholder="Ex: 1, 2, 3, 4"><br>
+    <button onclick="processNumbers()">Calcular</button>
+
+    <h2>Resultados:</h2>
+    <p id="result"></p>
+
+    <script>
+        function processNumbers() {
+            const input = document.getElementById('numbers').value;
+            const numbersArray = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+
+            if (numbersArray.length === 0) {
+                document.getElementById('result').innerText = 'Por favor, insira números válidos.';
+                return;
+            }
+
+            const sum = numbersArray.reduce((acc, num) => acc + num, 0);
+            const average = sum / numbersArray.length;
+            const evenCount = numbersArray.filter(num => num % 2 === 0).length;
+            const oddCount = numbersArray.length - evenCount;
+
+            const resultText = `
+                Soma: ${sum} <br>
+                Média: ${average.toFixed(2)} <br>
+                Números Pares: ${evenCount} <br>
+                Números Ímpares: ${oddCount}
+            `;
+
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>

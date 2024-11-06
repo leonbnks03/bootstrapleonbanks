@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasto de Combustível</title>
+</head>
+<body>
+    <h1>Cálculo de Gasto de Combustível</h1>
+    <label for="kilometers">Quilometragem percorrida (km):</label>
+    <input type="number" id="kilometers"><br>
+    <label for="fuelPrice">Valor do combustível (R$):</label>
+    <input type="number" id="fuelPrice"><br>
+    <button onclick="calculateFuelCost()">Calcular Gasto</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateFuelCost() {
+            const kilometers = parseFloat(document.getElementById('kilometers').value);
+            const fuelPrice = parseFloat(document.getElementById('fuelPrice').value);
+            const consumption = 8; // km/litro
+
+            const litersUsed = kilometers / consumption;
+            const totalCost = litersUsed * fuelPrice;
+
+            document.getElementById('result').innerText = `Gasto total: R$ ${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

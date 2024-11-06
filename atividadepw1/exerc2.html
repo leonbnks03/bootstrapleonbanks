@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão de Temperatura</title>
+</head>
+<body>
+    <h1>Conversão de Temperatura</h1>
+    <label for="temperature">Temperatura:</label>
+    <input type="number" id="temperature" placeholder="Digite a temperatura">
+    <select id="unit">
+        <option value="C">Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+    </select>
+    <button onclick="convertTemperature()">Converter</button>
+    <p id="result"></p>
+
+    <script>
+        function convertTemperature() {
+            const temp = parseFloat(document.getElementById('temperature').value);
+            const unit = document.getElementById('unit').value;
+            let result;
+
+            if (unit === 'C') {
+                result = (temp * 1.8) + 32; // Celsius to Fahrenheit
+                document.getElementById('result').innerText = `${temp}°C é igual a ${result.toFixed(2)}°F`;
+            } else {
+                result = (temp - 32) / 1.8; // Fahrenheit to Celsius
+                document.getElementById('result').innerText = `${temp}°F é igual a ${result.toFixed(2)}°C`;
+            }
+        }
+    </script>
+</body>
+</html>

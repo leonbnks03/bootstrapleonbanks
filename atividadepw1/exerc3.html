@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetor de Números</title>
+</head>
+<body>
+    <h1>Análise de Números</h1>
+    <label for="numbers">Digite 10 números inteiros (separados por vírgula):</label><br>
+    <input type="text" id="numbers" placeholder="Ex: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10"><br>
+    <button onclick="analyzeNumbers()">Analisar</button>
+    <p id="result"></p>
+
+    <script>
+        function analyzeNumbers() {
+            const input = document.getElementById('numbers').value.split(',').map(num => parseInt(num.trim()));
+            const validNumbers = input.filter(num => !isNaN(num));
+            
+            if (validNumbers.length !== 10) {
+                document.getElementById('result').innerText = 'Por favor, insira exatamente 10 números.';
+                return;
+            }
+
+            const sum = validNumbers.reduce((acc, num) => acc + num, 0);
+            const average = sum / validNumbers.length;
+            const aboveAverage = validNumbers.filter(num => num > average);
+            const countNegative = validNumbers.filter(num => num < 0).length;
+
+            const resultText = `
+                Números acima da média: ${aboveAverage.join(', ')} <br>
+                Números menores que zero: ${countNegative}
+            `;
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>
